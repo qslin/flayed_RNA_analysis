@@ -2,13 +2,16 @@
 
 This document records the RNA-seq and sRNA-seq data analysis processes performed by Qiaoshan Lin.
 
-## Getting started
+## Part I: mRNA processing
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+### Step 1: RNA-seq reads fastQC
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+Here I used the clean reads provided by the sequencing company so that reads trimming was not necessary. FastQC and multiQC were used to check and visualize the reads quality.
 
-## Add your files
+- run [scripts/mRNA_fastqc/fastQC.sh](https://github.com/qslin/flayed_RNA_analysis/blob/master/scripts/mRNA_fastqc/fastQC.sh)
+
+- run [scripts/mRNA_fastqc/multiQC.sh](https://github.com/qslin/flayed_RNA_analysis/blob/master/scripts/mRNA_fastqc/multiQC.sh)
+
 
 - [ ] [Create](https://gitlab.com/-/experiment/new_project_readme_content:ad9574833aef0b84229df439c6491b83?https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://gitlab.com/-/experiment/new_project_readme_content:ad9574833aef0b84229df439c6491b83?https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
 - [ ] [Add files using the command line](https://gitlab.com/-/experiment/new_project_readme_content:ad9574833aef0b84229df439c6491b83?https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
