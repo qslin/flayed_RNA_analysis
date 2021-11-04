@@ -13,11 +13,10 @@
 
 module load minimap2
 
-minimap2 ~/Mimulus_Genomes/results/annotation/LF10/LF10g_v2.0.longest_isoform.codingseq.fa centroids.fasta > centroids2cds.paf
+cd ../../results/transcriptome_assembly
 
+#minimap2 ~/Mimulus_Genomes/results/annotation/LF10/LF10g_v2.0.longest_isoform.codingseq.fa centroids.fasta > centroids2cds.paf
+#minimap2 -x splice -uf ~/resource/LF10/LF10g_v2.0.fa centroids.fasta > centroids2genome.paf
 
-target=~/resource/LF10/LF10g_v2.0.fa
-query=centroids.fasta
-out=centroids2genome.paf
+minimap2 ~/Mimulus_Genomes/results/annotation/LF10/LF10g_v2.0.longest_isoform.codingseq.fa centroids.transcripts.fasta > centroids.transcripts2cds.paf
 
-minimap2 -x splice -uf $target $query > $out
