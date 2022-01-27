@@ -5,6 +5,12 @@ This document records the RNA-seq and sRNA-seq data analysis processes performed
 ### Part I. mRNA processing
 
 <details>
+<summary>1. mRNA reads trimming</summary>
+
+> sbatch [scripts/mRNA_trimming/trim.sh](https://github.com/qslin/flayed_RNA_analysis/blob/master/scripts/mRNA_trimming/trim.sh)
+
+</details>
+<details>
 <summary>1. RNA-seq reads fastQC</summary>
 
 Here I used the clean reads provided by the sequencing company so that reads trimming was not necessary. FastQC and multiQC were used to check and visualize the reads quality.
