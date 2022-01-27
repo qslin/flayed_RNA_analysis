@@ -3,7 +3,7 @@
 #SBATCH -c 4
 #SBATCH -n 1
 #SBATCH -N 1
-#SBATCH -a 0,2,4,6,8,10,12,14,16,18,20,22
+#SBATCH -a 0-14
 #SBATCH --partition=general
 #SBATCH --qos=general
 #SBATCH --mail-type=END
@@ -15,13 +15,16 @@
 module load STAR
 module load samtools
 
-fq=(/archive/users/qlin/RNA/flayed_mutants/SAM_mRNA/2.cleandata/*/*gz)
+cd ../../results/mRNA_reads_mapping/
 
-prefix=`echo ${fq[$SLURM_ARRAY_TASK_ID]}|perl -lane '$_=~s/.+\///;$_=~s/_.+$//;print'`
+fq1=(../mRNA_trimming/*_R1_paired.fq.gz)
+fq2=(../mRNA_trimming/*_R2_paired.fq.gz)
+
+prefix=`echo ${fq1[$SLURM_ARRAY_TASK_ID]}|perl -lane '$_=~s/.+\/trimmed_(.*?)_R.*//;print $1'`
 
 STAR --runThreadN 4 \
  --genomeDir genome \
- --readFilesIn ${fq[$SLURM_ARRAY_TASK_ID]} ${fq[$SLURM_ARRAY_TASK_ID+1]} \
+ --readFilesIn ${fq1[$SLURM_ARRAY_TASK_ID]} ${fq2[$SLURM_ARRAY_TASK_ID]} \
  --readFilesCommand gunzip -c \
  --outFileNamePrefix $prefix \
  --outSAMtype BAM SortedByCoordinate \

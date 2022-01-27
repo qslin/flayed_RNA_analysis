@@ -13,8 +13,11 @@
 
 module load STAR
 
+#mkdir ../../results/mRNA_reads_mapping/
+cd ../../results/mRNA_reads_mapping/
+
 mkdir genome
-STAR --runThreadN 8 --runMode genomeGenerate --genomeDir genome --genomeFastaFiles /home/CAM/qlin/resource/LF10/LF10g_v2.0.fa --sjdbGTFfile /home/CAM/qlin/resource/LF10/LF10g_v2.0.gtf --genomeSAindexNbases 13
+STAR --runThreadN 8 --runMode genomeGenerate --genomeDir genome --genomeFastaFiles ~/resource/LF10/LF10g_v2.0.fa --sjdbGTFfile ~/resource/LF10/LF10g_v2.0.gtf --genomeSAindexNbases 13
 
 
 

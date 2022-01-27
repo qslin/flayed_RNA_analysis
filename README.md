@@ -33,8 +33,10 @@ STAR was used to map reads to genome and to count reads on genes. A genome file 
 
 > sbatch [scripts/mRNA_reads_mapping/align.sh](https://github.com/qslin/flayed_RNA_analysis/blob/master/scripts/mRNA_reads_mapping/align.sh)
 
-To map reads onto any desired sequence, prepare the sequence in fasta format and use hisat2 to perform the mapping. For example, I prepared five pri-miR169 transcripts and mapped reads to them
+To map reads onto any desired sequence, prepare the sequence in fasta format and use hisat2 to perform the mapping. For example, I prepared six pri-miR169 transcripts and mapped reads to them
 .
+
+> sbatch [scripts/pri-miR169/index.sh](https://github.com/qslin/flayed_RNA_analysis/blob/master/scripts/pri-miR169/index.sh)
 
 > sbatch [scripts/pri-miR169/align.sh](https://github.com/qslin/flayed_RNA_analysis/blob/master/scripts/pri-miR169/align.sh)
 
