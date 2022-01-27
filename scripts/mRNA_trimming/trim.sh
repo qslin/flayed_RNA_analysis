@@ -28,6 +28,7 @@ java -jar $Trimmomatic PE \
  ${reads1[$SLURM_ARRAY_TASK_ID]} ${reads2[$SLURM_ARRAY_TASK_ID]} \
  trimmed_$prefix\_R1_paired.fq.gz trimmed_$prefix\_R1_unpaired.fq.gz \
  trimmed_$prefix\_R2_paired.fq.gz trimmed_$prefix\_R2_unpaired.fq.gz \
+ ILLUMINACLIP:/home/FCAM/qlin/flayed_RNA_analysis/scripts/mRNA_trimming/adapter.fa:2:30:10 \
  LEADING:5 \
  TRAILING:5 \
  SLIDINGWINDOW:4:10 \

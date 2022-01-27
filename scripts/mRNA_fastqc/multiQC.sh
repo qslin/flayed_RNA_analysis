@@ -13,6 +13,7 @@
 
 module load MultiQC
 
-multiqc .
+dir=../../results/mRNA_fastqc/
+multiqc $dir -o $dir
 
 

@@ -3,7 +3,7 @@
 #SBATCH -n 1
 #SBATCH -N 1
 #SBATCH -c 1
-#SBATCH -a 0-23
+#SBATCH -a 0-29
 #SBATCH --partition=general
 #SBATCH --qos=general
 #SBATCH --mail-type=END
@@ -14,7 +14,9 @@
 
 module load fastqc
 
-fq=(/archive/users/qlin/RNA/flayed_mutants/SAM_mRNA/2.cleandata/*/*gz)
+fq=(../../results/mRNA_trimming/*_paired.fq.gz)
 
-fastqc -o . ${fq[$SLURM_ARRAY_TASK_ID]}
+#mkdir ../../results/mRNA_fastqc
+fastqc -o ../../results/mRNA_fastqc/ ${fq[$SLURM_ARRAY_TASK_ID]}
+
 

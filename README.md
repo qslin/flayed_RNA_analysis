@@ -7,13 +7,16 @@ This document records the RNA-seq and sRNA-seq data analysis processes performed
 <details>
 <summary>1. mRNA reads trimming</summary>
 
+First, save adapters to trim in adapter.fa
+
 > sbatch [scripts/mRNA_trimming/trim.sh](https://github.com/qslin/flayed_RNA_analysis/blob/master/scripts/mRNA_trimming/trim.sh)
 
 </details>
-<details>
-<summary>1. RNA-seq reads fastQC</summary>
 
-Here I used the clean reads provided by the sequencing company so that reads trimming was not necessary. FastQC and multiQC were used to check and visualize the reads quality.
+<details>
+<summary>2. RNA-seq reads fastQC</summary>
+
+FastQC and multiQC were used to check and visualize the reads quality after trimming.
 
 > sbatch [scripts/mRNA_fastqc/fastQC.sh](https://github.com/qslin/flayed_RNA_analysis/blob/master/scripts/mRNA_fastqc/fastQC.sh)
 
@@ -22,7 +25,7 @@ Here I used the clean reads provided by the sequencing company so that reads tri
 </details>
 
 <details>
-<summary>2. RNA-seq reads mapping</summary>
+<summary>3. RNA-seq reads mapping</summary>
 
 STAR was used to map reads to genome and to count reads on genes. A genome file in fasta format and an gene annotation file in gtf format are required for running the scripts.
 
