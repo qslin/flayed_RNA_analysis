@@ -63,3 +63,29 @@ Map transcripts to annotated genes.
 
 > sbatch [scripts/transcriptome_assembly/minimap2.sh](https://github.com/qslin/flayed_RNA_analysis/blob/master/scripts/transcriptome_assembly/minimap2.sh)
 
+### Part II. sRNA processing
+
+sRNAminer is a software developed by Xia Rui Lab. Please contact them by QQ group ID: 979930653 if you want to download the software. They may publish this software soon. --2022/01/31
+
+<details>
+<summary>1. sRNA reads trimming</summary>
+
+First, predict adapters and remove them by sRNAminer
+
+> sbatch [scripts/sRNA_trimming/trim.sh](https://github.com/qslin/flayed_RNA_analysis/blob/master/scripts/sRNA_trimming/trim.sh)
+
+Then, exam the length of trimmed reads
+
+> sbatch [scripts/sRNA_trimming/exam.sh](https://github.com/qslin/flayed_RNA_analysis/blob/master/scripts/sRNA_trimming/exam.sh) 
+
+Some sequencing files are paired end sequencing, so the 2.trimmed files need to be reverse-complemented 
+
+> sbatch [scripts/sRNA_trimming/reverse-complement.sh](https://github.com/qslin/flayed_RNA_analysis/blob/master/scripts/sRNA_trimming/reverse-complement.sh)
+
+Finally, collapse the same reads and count number for each 
+
+> sbatch [scripts/sRNA_trimming/collapse.sh](https://github.com/qslin/flayed_RNA_analysis/blob/master/scripts/sRNA_trimming/collapse.sh)
+
+</details>
+
+
