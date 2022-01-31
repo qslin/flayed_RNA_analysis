@@ -63,6 +63,8 @@ Map transcripts to annotated genes.
 
 > sbatch [scripts/transcriptome_assembly/minimap2.sh](https://github.com/qslin/flayed_RNA_analysis/blob/master/scripts/transcriptome_assembly/minimap2.sh)
 
+</details>
+
 ### Part II. sRNA processing
 
 sRNAminer is a software developed by Xia Rui Lab. Please contact them by QQ group ID: 979930653 if you want to download the software. They may publish this software soon. --2022/01/31
