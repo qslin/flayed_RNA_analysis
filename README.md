@@ -139,7 +139,7 @@ Another tool to predict miRNA is miRDP2. Here are reference scripts for it. But 
 <details>
 <summary>4. sRNA quantification</summary>
 
-
+> sh [scripts/sRNA_quantification/quantify.sh](https://github.com/qslin/flayed_RNA_analysis/blob/master/scripts/sRNA_quantification/quantify.sh)
 
 </details>
 
