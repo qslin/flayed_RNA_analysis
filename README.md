@@ -90,4 +90,56 @@ Finally, collapse the same reads and count number for each
 
 </details>
 
+<details>
+<summary>2. sRNA reads mapping</summary>
+
+First, make an index
+
+> sbatch [scripts/sRNA_reads_mapping/index.sh](https://github.com/qslin/flayed_RNA_analysis/blob/master/scripts/sRNA_reads_mapping/index.sh)
+
+Then, map trimmed and collapsed sRNA reads to genome
+
+> sbatch [scripts/sRNA_reads_mapping/map.sh](https://github.com/qslin/flayed_RNA_analysis/blob/master/scripts/sRNA_reads_mapping/map.sh)
+
+For visualize read mapping in IGV-sRNA, run another bowtie command to produce bam format
+
+> sbatch [scripts/sRNA_reads_mapping/igv.sh](https://github.com/qslin/flayed_RNA_analysis/blob/master/scripts/sRNA_reads_mapping/igv.sh)
+
+</details>
+
+<details>
+<summary>3. sRNA prediction</summary>
+
+Predict miRNA
+
+> sbatch [scripts/sRNA_prediction/predict_miRNA.sh](https://github.com/qslin/flayed_RNA_analysis/blob/master/scripts/sRNA_prediction/predict_miRNA.sh)
+
+Download mature.fa.gz from miRNA database and annotate miRNA
+
+> sh [scripts/sRNA_prediction/filter_miRNA.sh](https://github.com/qslin/flayed_RNA_analysis/blob/master/scripts/sRNA_prediction/filter_miRNA.sh)
+
+Predict phasiRNA
+
+> sbatch [scripts/sRNA_prediction/predict_phasiRNA.sh](https://github.com/qslin/flayed_RNA_analysis/blob/master/scripts/sRNA_prediction/predict_phasiRNA.sh)
+
+Merge phasiRNA prediction results
+
+> sh [scripts/sRNA_prediction/merge_phasiRNA.sh](https://github.com/qslin/flayed_RNA_analysis/blob/master/scripts/sRNA_prediction/merge_phasiRNA.sh)
+
+Another tool to predict miRNA is miRDP2. Here are reference scripts for it. But I didn't use them.
+
+> [scripts/sRNA_prediction/miRDP2_index.sh](https://github.com/qslin/flayed_RNA_analysis/blob/master/scripts/sRNA_prediction/miRDP2_index.sh)
+
+> [scripts/sRNA_prediction/miRDP2_prepare.sh](https://github.com/qslin/flayed_RNA_analysis/blob/master/scripts/sRNA_prediction/miRDP2_prepare.sh)
+
+> [scripts/sRNA_prediction/miRDP2_predict.sh](https://github.com/qslin/flayed_RNA_analysis/blob/master/scripts/sRNA_prediction/miRDP2_predict.sh)
+
+</details>
+
+<details>
+<summary>4. sRNA quantification</summary>
+
+
+
+</details>
 

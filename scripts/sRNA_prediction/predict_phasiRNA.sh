@@ -1,25 +1,25 @@
-file=(../mapping/*.mc.bowtie.aln.sorted)
-for i in "${file[@]}"
-do
-	name=`echo $i|perl -lane '$_=~s/^.+\///;$_=~s/\.mc.bowtie.aln.sorted$//;print'`
-	java -cp ../sRNAminer.jar biocjava.sRNA.Miner.phasiRNA.PHASMinerCLI --inAln $i --output $name\.21.PHAS.tab --phasLen 21
-	java -cp ../sRNAminer.jar biocjava.sRNA.Miner.phasiRNA.PHASMinerCLI --inAln $i --output $name\.24.PHAS.tab --phasLen 24
-done
+#!/bin/bash
+#SBATCH --job-name=predict_phasiRNA
+#SBATCH -c 1
+#SBATCH -n 1
+#SBATCH -N 1
+#SBATCH -a 0-21
+#SBATCH --partition=general
+#SBATCH --qos=general
+#SBATCH --mail-type=END
+#SBATCH --mem=20G
+#SBATCH --mail-user=qiaoshan.lin@uconn.edu
+#SBATCH -o %x_%A_%a.out
+#SBATCH -e %x_%A_%a.err
 
-ls *.21.PHAS.tab > all.21.PHAS.list
-java -cp ../sRNAminer.jar biocjava.sRNA.Miner.phasiRNA.PHASMerger --inFileList all.21.PHAS.list --outFile merged.21.PHAS.list.xls
+file=(../../results/sRNA_reads_mapping/*.mc.bowtie.aln.sorted)
 
-perl -i.bak -lane 'print and next if $.==1;print if $F[5]>1' merged.21.PHAS.list.xls
+name=`echo ${file[$SLURM_ARRAY_TASK_ID]}|perl -lane '$_=~/.*\/(.*)\.mc.bowtie.aln.sorted$/;print $1'`
 
-genome=~/resource/LF10/LF10g_v2.0.fa
-java -cp ../sRNAminer.jar biocjava.bioIO.FastX.FastaIndex.MakeFastaIndex --inFa $genome --outFa $genome\.TBtools.fa
-java -cp ../sRNAminer.jar biocjava.sRNA.Miner.phasiRNA.PHASMergedListToGFF --inPhasList merged.21.PHAS.list.xls --outGff3 merged.PHAS21.gff3 --phasLen 21 --inGenome $genome
+outdir=../../results/sRNA_prediction
 
-ls *.24.PHAS.tab > all.24.PHAS.list
-java -cp ../sRNAminer.jar biocjava.sRNA.Miner.phasiRNA.PHASMerger --inFileList all.24.PHAS.list --outFile merged.24.PHAS.list.xls
+java -cp ../sRNAminer.jar biocjava.sRNA.Miner.phasiRNA.PHASMinerCLI --inAln ${file[$SLURM_ARRAY_TASK_ID]} --output $outdir/$name\.21.PHAS.tab --phasLen 21
+java -cp ../sRNAminer.jar biocjava.sRNA.Miner.phasiRNA.PHASMinerCLI --inAln ${file[$SLURM_ARRAY_TASK_ID]} --output $outdir/$name\.24.PHAS.tab --phasLen 24
 
-perl -i.bak -lane 'print and next if $.==1;print if $F[5]>1' merged.24.PHAS.list.xls
-
-java -cp ../sRNAminer.jar biocjava.sRNA.Miner.phasiRNA.PHASMergedListToGFF --inPhasList merged.24.PHAS.list.xls --outGff3 merged.PHAS24.gff3 --phasLen 24 --inGenome $genome
 
 

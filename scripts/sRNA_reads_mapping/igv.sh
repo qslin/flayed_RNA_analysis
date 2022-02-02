@@ -3,7 +3,7 @@
 #SBATCH -c 8
 #SBATCH -n 1
 #SBATCH -N 1
-#SBATCH -a 0-16
+#SBATCH -a 0-21
 #SBATCH --partition=general
 #SBATCH --qos=general
 #SBATCH --mail-type=END
@@ -15,14 +15,13 @@
 module load bowtie
 module load samtools
 
-file=(*.mc.fa)
+cd ../../results/sRNA_reads_mapping/
+file=(../sRNA_trimming/*.mc.fa)
 
-name=`echo ${file[$SLURM_ARRAY_TASK_ID]} | perl -lane '{$_=~s/\.mc\.fa$//;print}'`
+name=`echo ${file[$SLURM_ARRAY_TASK_ID]} | perl -lane '{$_=~/.*\/(.*)\.mc\.fa$/;print $1}'`
 
-for i in ${file[$SLURM_ARRAY_TASK_ID]}
-do 
-	bowtie -f -p 8 -v 1 -m 20 -S -a --best --strata genome $i|samtools view -Sb -F4 -@ 8 -|samtools sort -@ 8 - > $name\.sorted.bam
-	samtools index $name\.sorted.bam
-done
+bowtie -f -p 8 -v 1 -m 20 -S -a --best --strata genome ${file[$SLURM_ARRAY_TASK_ID]}|samtools view -Sb -F4 -@ 8 -|samtools sort -@ 8 - > $name\.sorted.bam
+samtools index $name\.sorted.bam
+
 
 

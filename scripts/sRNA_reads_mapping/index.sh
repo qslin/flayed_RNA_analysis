@@ -3,16 +3,18 @@
 #SBATCH -c 4
 #SBATCH -n 1
 #SBATCH -N 1
-#SBATCH -a 0
 #SBATCH --partition=general
 #SBATCH --qos=general
 #SBATCH --mail-type=END
 #SBATCH --mem=10G
 #SBATCH --mail-user=qiaoshan.lin@uconn.edu
-#SBATCH -o %x_%A_%a.out
-#SBATCH -e %x_%A_%a.err
+#SBATCH -o %x_%j.out
+#SBATCH -e %x_%j.err
 
 module load bowtie
+
+#mkdir ../../results/sRNA_reads_mapping
+cd ../../results/sRNA_reads_mapping
 
 bowtie-build -f ~/resource/LF10/LF10g_v2.0.fa genome
 bowtie-build -f ~/resource/LF10/LF10g_v2.0_organelle.fa organelle
