@@ -50,9 +50,16 @@ First, merge all read counts into one file.
 ```
 file=(../2_Count/*ReadsPerGene.out.tab.txt)
 
-for f in ${file[@]}; do prefix=`echo $f | perl -lane '$_=~/.*\/(.*)ReadsPerGene.out.tab.txt/;print $1'`; cut -f2 $f > $prefix\.txt; done
+for f in ${file[@]}; do prefix=`echo $f | perl -lane '$_=~/.*\/(.*)ReadsPerGene.out.tab.txt/;print $1'`; echo $prefix > $prefix\.txt; cut -f2 $f >> $prefix\.txt; done
 
+echo gene_id > geneID.txt; cut -f1 ../2_Count/LF10-EReadsPerGene.out.tab.txt >> geneID.txt
+
+paste geneID.txt LF10-E.txt LF10_F.txt LF10-G.txt f2-A.txt f2-C.txt f5-A.txt f6-A.txt f6-B.txt f6-C.txt f26-A.txt f26-D.txt F56_A.txt F56_B.txt F56_C.txt f56-A.txt |grep -v 'N_' > raw_count.txt
 ```
+
+Then normalize counts by edgeR.
+
+> execute codes in [scripts/mRNA_reads_count_normalization/edgeR.R](https://github.com/qslin/flayed_RNA_analysis/blob/master/scripts/mRNA_reads_count_normalization/edgeR.R)
 
 </details>
 
