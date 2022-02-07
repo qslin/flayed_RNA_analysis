@@ -48,7 +48,7 @@ To map reads onto any desired sequence, prepare the sequence in fasta format and
 First, merge all read counts into one file.
 
 ```
-file=(../2\_Count/\*ReadsPerGene.out.tab.txt)
+file=(../2_Count/*ReadsPerGene.out.tab.txt)
 
 for f in ${file[@]}; do prefix=`echo $f | perl -lane '$_=~/.*\/(.*)ReadsPerGene.out.tab.txt/;print $1'`; cut -f2 $f > $prefix\.txt; done
 
