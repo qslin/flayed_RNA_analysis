@@ -14,7 +14,7 @@ First, save adapters to trim in adapter.fa
 </details>
 
 <details>
-<summary>2. RNA-seq reads fastQC</summary>
+<summary>2. mRNA reads fastQC</summary>
 
 FastQC and multiQC were used to check and visualize the reads quality after trimming.
 
@@ -25,7 +25,7 @@ FastQC and multiQC were used to check and visualize the reads quality after trim
 </details>
 
 <details>
-<summary>3. RNA-seq reads mapping</summary>
+<summary>3. mRNA reads mapping</summary>
 
 STAR was used to map reads to genome and to count reads on genes. A genome file in fasta format and an gene annotation file in gtf format are required for running the scripts.
 
@@ -43,13 +43,16 @@ To map reads onto any desired sequence, prepare the sequence in fasta format and
 </details>
 
 <details>
-<summary>4. Normalize counts</summary>
+<summary>4. mRNA reads count normalization</summary>
 
 First, merge all read counts into one file.
 
-> file=(../2\_Count/\*ReadsPerGene.out.tab.txt)
+```
+file=(../2\_Count/\*ReadsPerGene.out.tab.txt)
 
-> for f in ${file[@]}; do prefix=`echo $f | perl -lane '$_=~/.*\/(.*)ReadsPerGene.out.tab.txt/;print $1'`; cut -f2 $f > $prefix\.txt; done
+for f in ${file[@]}; do prefix=`echo $f | perl -lane '$_=~/.*\/(.*)ReadsPerGene.out.tab.txt/;print $1'`; cut -f2 $f > $prefix\.txt; done
+
+```
 
 </details>
 
