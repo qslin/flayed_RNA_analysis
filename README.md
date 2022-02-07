@@ -43,6 +43,17 @@ To map reads onto any desired sequence, prepare the sequence in fasta format and
 </details>
 
 <details>
+<summary>4. Normalize counts</summary>
+
+First, merge all read counts into one file.
+
+> file=(../2\_Count/\*ReadsPerGene.out.tab.txt)
+
+> for f in ${file[@]}; do prefix=`echo $f | perl -lane '$_=~/.*\/(.*)ReadsPerGene.out.tab.txt/;print $1'`; cut -f2 $f > $prefix\.txt; done
+
+</details>
+
+<details>
 <summary>3. Assemble transcriptome</summary>
 
 Since I need to predict sRNA target sites that might be located on UTRs of genes, transcriptome was re-assembled even though CDS sequences were known. 
