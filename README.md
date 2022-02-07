@@ -57,7 +57,7 @@ echo gene_id > geneID.txt; cut -f1 ../2_Count/LF10-EReadsPerGene.out.tab.txt >> 
 paste geneID.txt LF10-E.txt LF10_F.txt LF10-G.txt f2-A.txt f2-C.txt f5-A.txt f6-A.txt f6-B.txt f6-C.txt f26-A.txt f26-D.txt F56_A.txt F56_B.txt F56_C.txt f56-A.txt |grep -v 'N_' > raw_count.txt
 ```
 
-Then normalize counts by edgeR.
+Then normalize counts by edgeR (a sample_info file need to be created before running the codes).
 
 > execute codes in [scripts/mRNA_reads_count_normalization/edgeR.R](https://github.com/qslin/flayed_RNA_analysis/blob/master/scripts/mRNA_reads_count_normalization/edgeR.R)
 
