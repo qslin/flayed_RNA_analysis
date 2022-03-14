@@ -64,6 +64,15 @@ Then normalize counts by edgeR (a sample_info file need to be created before run
 </details>
 
 <details>
+<summary>5. batch effects adjustment</summary>
+
+Since the data came from multipul different sequencing batches, batch effects were adjusted. Results were visualized by MDS plots. 
+
+> execute codes in [scripts/mRNA_batch_effects_adjustment/ComBat_seq.R](https://github.com/qslin/flayed_RNA_analysis/blob/master/scripts/mRNA_batch_effects_adjustment/ComBat_seq.R)
+
+</details>
+
+<details>
 <summary>3. Assemble transcriptome</summary>
 
 Since I need to predict sRNA target sites that might be located on UTRs of genes, transcriptome was re-assembled even though CDS sequences were known. 
