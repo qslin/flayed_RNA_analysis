@@ -73,6 +73,19 @@ Since the data came from multipul different sequencing batches, batch effects we
 </details>
 
 <details>
+<summary>6. differential expression analysis</summary>
+
+Use edgeR to find differential expressed genes between samples.
+
+> execute codes in [scripts/mRNA_differential_expression/edgeR.R](https://github.com/qslin/flayed_RNA_analysis/blob/master/scripts/mRNA_differential_expression/edgeR.R)
+
+Add functional annotations to genes (LF10g_v2.0_functional_annotations_simple.tsv was used by default).
+
+> perl [scripts/mRNA_differential_expression/annotate.pl](https://github.com/qslin/flayed_RNA_analysis/blob/master/scripts/mRNA_differential_expression/annotate.pl) XXX.csv 
+
+</details>
+
+<details>
 <summary>3. Assemble transcriptome</summary>
 
 Since I need to predict sRNA target sites that might be located on UTRs of genes, transcriptome was re-assembled even though CDS sequences were known. 
