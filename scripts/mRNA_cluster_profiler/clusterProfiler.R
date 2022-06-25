@@ -57,7 +57,7 @@ for(n in seq(length(names))){
   # GO enrichment #
   #################
   go_enrich <- enricher(gene=geneList,pvalueCutoff = 0.05,pAdjustMethod = "BH",TERM2GENE = go_term2gene, TERM2NAME = go_term2name)
-  write.csv(as.data.frame(go_enrich),paste0("go_enrich_",names[n],".csv"),row.names = F)
+  write.table(as.data.frame(go_enrich),paste0("go_enrich_",names[n],".txt"),row.names = F,sep = "\t")
   size <- nrow(as.data.frame(go_enrich))
   if(size>0) {
     plots(go_enrich,names[n],size)
@@ -67,7 +67,7 @@ for(n in seq(length(names))){
   # KEGG enrichment #
   ###################
   kegg_enrich <- enricher(gene=geneList,pvalueCutoff = 0.05,pAdjustMethod = "BH",TERM2GENE = kegg_term2gene)
-  write.csv(as.data.frame(kegg_enrich),paste0("kegg_enrich_",names[n],".csv"),row.names = F)
+  write.table(as.data.frame(kegg_enrich),paste0("kegg_enrich_",names[n],".txt"),row.names = F,sep = "\t")
   size <- nrow(as.data.frame(kegg_enrich))
   if(size>0) {
     plots(kegg_enrich,names[n],size)
@@ -77,7 +77,7 @@ for(n in seq(length(names))){
   # KOG enrichment #
   ###################
   kog_enrich <- enricher(gene=geneList,pvalueCutoff = 0.05,pAdjustMethod = "BH",TERM2GENE = kog_term2gene)
-  write.csv(as.data.frame(kog_enrich),paste0("kog_enrich_",names[n],".csv"),row.names = F)
+  write.table(as.data.frame(kog_enrich),paste0("kog_enrich_",names[n],".txt"),row.names = F,sep = "\t")
   size <- nrow(as.data.frame(kog_enrich))
   if(size>0) {
     plots(kog_enrich,names[n],size)
