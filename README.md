@@ -85,6 +85,14 @@ Add functional annotations to genes (LF10g_v2.0_functional_annotations_simple.ts
 
 </details>
 
+<details>
+<summary>7. GO/KEGG/KOG enrichment analysis</summary>
+
+Prepare annotations for clusterProfiler (annotations for LF10g_2.0 have been created [here](https://github.com/qslin/flayed_RNA_analysis/blob/master/scripts/mRNA_cluster_profiler/)).
+
+> execute codes in [scripts/mRNA_cluster_profiler/clusterProfiler.R](https://github.com/qslin/flayed_RNA_analysis/blob/master/scripts/mRNA_cluster_profiler/clusterProfiler.R)
+
+</details>
 
 ### Part II. sRNA processing
 
